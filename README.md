@@ -1,0 +1,1 @@
+In today’s fast-paced work environment, efficient task and project management is critical for individuals and teams.project focuses on creating an intuitive interface, robust backend, and integration of Python libraries to automate and streamline task management, providing an accessible alternative to existing solutions.
