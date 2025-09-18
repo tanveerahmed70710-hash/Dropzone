@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Pilot Trello Onboarding</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 32px 24px 24px 24px;
+        }
+        h2 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 24px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        button {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #1e40af;
+        }
+        .progress {
+            margin: 24px 0 16px 0;
+            padding: 0;
+            list-style: none;
+        }
+        .progress li {
+            background: #e0e7ef;
+            margin-bottom: 8px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            color: #374151;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .result {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 18px;
+            text-align: center;
+        }
+        .trello-link {
+            display: inline-block;
+            margin-top: 10px;
+            background: #39a97b;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .trello-link:hover {
+            background: #277a56;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🚀 Trello Onboarding Assistant</h2>
+        <form method="POST">
+            <input type="text" name="project_name" placeholder="Project Name" required>
+            <textarea name="project_goal" placeholder="Project Goal" rows="3" required></textarea>
+            <button type="submit">Start Onboarding</button>
+        </form>
+
+        {% if status %}
+            <ul class="progress">
+                {% for step in status %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if board_url %}
+        <div class="result">
+            <h3>🎉 Board Created!</h3>
+            <p><strong>Name:</strong> {{ board_name }}</p>
+            <p><strong>Goal:</strong> {{ board_goal }}</p>
+            <a class="trello-link" href="{{ board_url }}" target="_blank">Open in Trello</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
